@@ -6,8 +6,13 @@ import { createStore, applyMiddleware } from 'redux'
 
 import Counter from './Counter'
 import reducer from './reducers'
+import  { helloSaga } from './sagas'
+import createSagaMiddlwware from 'redux-saga'
 
-const store = createStore(reducer)
+const sagaMiddleware = createSagaMiddlwware()
+const store = createStore(reducer, applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(helloSaga)
 
 const action = type => store.dispatch({type})
 
