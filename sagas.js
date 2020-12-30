@@ -7,7 +7,7 @@ function* helloSaga() {
 }
 
 function* IncrementAsync() {
-    yield delay(1000)
+    yield call(delay, 1000)
     yield put({type: 'INCREMENT'})
 }
 
